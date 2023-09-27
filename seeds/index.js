@@ -5,7 +5,7 @@ const cities = require('./cities')
 const { places, descriptors } = require('./seedHelpers');
 const Campground = require('../models/campground');
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/yelp-camp');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error:"));
@@ -23,7 +23,7 @@ const seedDb = async () => {
         const camp = new Campground({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://placeimg.com/640/480/nature',
+            image: 'https://picsum.photos/200/300',
             description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ex, facere impedit ad quo esse adipisci eveniet dicta sit, commodi quaerat soluta laudantium molestias doloribus officia numquam necessitatibus corrupti voluptate!',
             price
 
