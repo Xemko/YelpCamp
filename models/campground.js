@@ -12,6 +12,7 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual('thumbnail').get(function(){
+    // @ts-ignore
     return this.url.replace('/upload', '/upload/w_200');
 })
 
@@ -42,6 +43,7 @@ const CampgroundSchema = new Schema({
     }]
 });
 
+// @ts-ignore
 CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
